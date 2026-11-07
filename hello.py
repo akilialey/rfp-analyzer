@@ -9,4 +9,3 @@ if key:
     print("API key loaded successfully.")
 else:
     print("Failed to load API key.")
-
