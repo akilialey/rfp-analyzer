@@ -8,21 +8,22 @@ def convert_json_to_list(json_string):
         data = json.loads(json_string)
         
         # check if the parsed data is a list
-        if isinstance(data, list):
+        if isinstance(data, dict):
             return data
         else:
-            print("The provided JSON string does not represent a list.")
-            return []
+            print("The provided JSON string does not represent a dictionary.")
+            return {}
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
-        return []
+        return {}
 
 
-json_data = """ [
-  {"event": "RFP issued", "date": "Monday, June 8, 2026"},
-  {"event": "Questions from candidates to AIC deadline (email to procurement@aicanada.ca)", "date": "Monday, July 13, 2026 at 5:00 PM"},
-  {"event": "Closing date", "date": "Thursday, July 23, 2026 at 5:00 PM ET"}
-] """
+json_data = """ {
+  "deadlines": [
+    {"event": "RFP issued", "date": "Monday, June 8, 2026"},
+    {"event": "Questions from candidates to AIC deadline (email to procurement@aicanada.ca)", "date": "Monday, July 13, 2026 at 5:00 PM"},
+    {"event": "Closing date", "date": "Thursday, July 23, 2026 at 5:00 PM ET"}
+] } """
 
 dates_list = convert_json_to_list(json_data)
 
